@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block main %}
+  <div class="container">
+    <div class="wrapper category__wrapper">
+      <h1 class="layout__title">{{ category.name }}</h1>
+      <div class="category__description">{{ category.description }}</div>
+      {% if not posts %}
+          {% set alert = {"type": "info", "message": __('Brak wpisów', 'krframe') }%}
+          {% include 'parts/alert.twig' with {'alert': alert} %}
+      {% else %}
+          <div class="row">
+              {% for post in posts %}
+                  {% block item %}
+                      {% include 'parts/category_item.twig' %}
+                  {% endblock %}
+              {% endfor %}
+          </div>
+      {% endif %}
+      {% include 'parts/pagination.twig' %}
+    </div>
+  </div>
+{% endblock %}

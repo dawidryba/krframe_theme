@@ -1,0 +1,35 @@
+@-ms-viewport {
+  width: device-width;
+}
+@import "~bootstrap/scss/bootstrap";
+@import '~font-awesome/scss/font-awesome';
+@import 'mixins';
+@import 'variables';
+@import 'fonts';
+@import 'krFrame/autoload';
+@import 'general';
+
+// Wordpress styles
+
+@import 'wordpress/text_style';
+@import 'wordpress/gallery';
+
+// Wordpress Widgets
+@import 'widgets/InstagramMedia';
+@import 'widgets/RelatedPosts';
+
+//krFrame styles
+
+// Layouts
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/navigation';
+@import 'layout/pagination';
+@import 'layout/input';
+@import 'layout/alert';
+@import 'layout/table';
+
+@import 'custom';
+
+// Responsive
+@import 'responsive';

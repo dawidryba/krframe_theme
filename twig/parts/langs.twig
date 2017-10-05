@@ -1,0 +1,7 @@
+{% for lang in langs %}
+    <a href="{{ lang.url }}" hreflang="{{ lang.lang }}" title="{{ lang.name }}" class="{{ lang.class }}" rel="nofollow">
+        <abbr lang="{{ lang.lang }}" title="{{ lang.name }}">
+          <img src="{{ site.theme.link }}/images/flag-{{ lang.lang }}.png" alt="{{ lang.name }}" />
+        </abbr>
+    </a>
+{% endfor %}

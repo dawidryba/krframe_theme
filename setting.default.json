@@ -1,0 +1,63 @@
+{
+    "amp_support": true,
+    "widgets": {
+        "footer": {
+            "id": "footer",
+            "name": "Footer",
+            "before_widget": "<div class=\"widget %1$s\">",
+            "after_widget": "</div>",
+            "before_title": "<div class=\"widget-title\">",
+            "after_title": "</div>",
+            "default": true
+        }
+    },
+    "menu": {
+        "main-menu": "Main Menu"
+    },
+    "thumbnail": {
+        "main-photo": {
+            "name": "main-photo",
+            "width": 590,
+            "height": 330,
+            "crop": true
+        }
+    },
+    "custom-post-type": {
+        "gallery": {
+            "labels": {
+                "name": "Galerie",
+                "singular_name": "Galeria"
+            },
+            "public": true,
+            "has_archive": false,
+            "hierarchical": true,
+            "query_var": true,
+            "show_in_rest": false,
+            "rewrite": {
+              "slug": "galeria"
+            },
+            "menu_position": 7,
+            "supports": ["title", "thumbnail", "editor", "page-attributes"],
+            "taxonomies": [],
+            "menu_icon": "dashicons-images-alt2"
+        }
+    },
+    "taxonomies": {
+      "terrarist_list": {
+        "post_type": "terrarists",
+        "hierarchical": true,
+        "label": "Hodowla",
+        "query_var": true,
+        "rewrite": {
+          "slug": "terrarysci",
+          "with_front": true
+        }
+      }
+    },
+    "ajax_functions": {
+      "krAjaxSortSellers": {
+        "user": true,
+        "nouser": true
+      }
+    }
+}

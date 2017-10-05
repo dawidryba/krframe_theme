@@ -1,0 +1,28 @@
+.errorTheme {
+  background: $globalBodyBgColor;
+  color: $globalBodyTextColor;
+  min-height: 100%;
+
+  body {
+    background: transparent;
+  }
+  .errorPage {
+    position: absolute;
+    top: 50%;
+    @include transform('translate(0,-50%)');
+    width: 100%;
+    text-align: center;
+    line-height: normal;
+
+    i {
+      font-size: 300px;
+    }
+    .code {
+      font-size: 70px;
+    }
+    .check {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  }
+}

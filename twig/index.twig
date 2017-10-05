@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+
+{% block main %}
+  <div class="container">
+    <div class="wrapper index__wrapper">
+      <h2 class="layout__title">{{ category.name }}</h2>
+      <div class="row">
+        {% for post in posts %}
+          {% include 'parts/category_item.twig' %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

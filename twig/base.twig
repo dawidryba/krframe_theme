@@ -1,0 +1,85 @@
+<!doctype html>
+<html {{site.language_attributes}} itemscope="itemscope" itemtype="http://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="{{site.charset}}"/>
+    <title itemprop="name">{{ wp_title }}</title>
+    {{ siteDescription }}
+    <link rel="stylesheet" href="{{site.theme.link}}/assets/css/theme.css" type="text/css" media="screen"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="pingback" href="{{site.pingback_url}}"/>
+    {{ function('wp_head') }}
+  </head>
+
+  <body class="{{body_class}}">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="container">
+        <div class="wrapper header__wrapper">
+          <div class="logo">
+            {% if function('is_front_page') %}<h1>{% endif %}
+              <a href="{{ site.url }}" title="{{ site.name }}" itemprop="headline">
+                <img src="{{ site.theme.link }}/images/logo.png" alt="{{ site.name }}"/>
+              </a>
+            {% if function('is_front_page') %}</h1>{% endif %}
+          </div>
+
+          {% if langs %}
+            {% include 'parts/langs.twig' with {'langs': langs} only %}
+          {% endif %}
+        </div>
+      </div>
+    </header>
+    <div class="navigation">
+      <div class="container">
+        <div class="wrapper navigation__wrapper">
+          <nav id="js-navigation" class="navigation__inner" itemscope itemtype="http://schema.org/SiteNavigationElement">
+            {% include "parts/menu.twig" with {'menu': menu.get_items} %}
+            <button class="button--menu button--close-menu" id="js-close-menu" aria-label="Close menu">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+          </nav>
+          <button id="js-open-menu" type="button" class="button--menu button--open-menu" aria-label="Open menu">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    {% block beforemain %}{% endblock %}
+    <main class="main" itemscope itemprop="mainContentOfPage">
+      {% block main %}{% endblock %}
+    </main>
+    {% block aftermain %}{% endblock %}
+
+    <footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+      <div class="container">
+        <div class="wrapper footer__wrapper">
+          {% if widgets.footer %}
+            <div class="widgets footer__widgets" id="footer-widgets">
+              <div class="row">{{ widgets.footer }}</div>
+            </div>
+          {% endif %}
+
+          <div class="row copyright">
+            <div class="col-sm-6">
+              &copy
+              {{ "now"|date('Y') }}
+              -
+              {{ site.name }}
+            </div>
+            <div class="col-sm-6 text-right">
+              {{ __('Projekt i realizacja', 'krframe') }}
+              {% if function('is_front_page') %}
+                <a href="http://www.grupazaki.pl" title="Grupa ZAKI - Reklama w internecie" target="_blank">Grupa ZAKI</a>
+              {% else %}
+                Grupa ZAKI
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="layout__mask-bg" id="js-mask-bg"></div>
+    {{ function('wp_footer') }}
+  </body>
+</html>

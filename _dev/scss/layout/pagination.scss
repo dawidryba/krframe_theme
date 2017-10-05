@@ -1,0 +1,36 @@
+.pagination {
+  text-align: center;
+  display: block;
+
+  ul {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      float: left;
+      margin-right: $margin/2;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      .page-number {
+        display: block;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        background: $paginationBgColor;
+        color: $paginationAColor;
+
+        &.current,
+        &:hover {
+          color: $paginationTextColorCurrent;
+          background: $paginationBgColorCurrent;
+        }
+      }
+    }
+  }
+}

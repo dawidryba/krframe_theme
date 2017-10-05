@@ -1,0 +1,30 @@
+{
+    "amp_support": false,
+    "acf_support": {
+      "enable": true,
+      "google_map_key": null
+    },
+    "widgets": {
+        "footer": {
+            "id": "footer",
+            "name": "Footer",
+            "before_widget": "<div class=\"widget %1$s\">",
+            "after_widget": "</div>",
+            "before_title": "<div class=\"widget-title\">",
+            "after_title": "</div>",
+            "default": true
+        },
+        "top-bar": {
+            "id": "top-bar",
+            "name": "Top Bar",
+            "before_widget": "<div class=\"widget %1$s\">",
+            "after_widget": "</div>",
+            "before_title": "<div class=\"hidden-xl-down\">",
+            "after_title": "</div>",
+            "default": true
+        }
+    },
+    "menu": {
+        "main-menu": "Main Menu"
+    }
+}

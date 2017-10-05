@@ -1,0 +1,11 @@
+input, textarea {
+  display: block;
+  width: 100%;
+  padding: $margin/5 $margin/3;
+  border: 1px solid $inputBorderColor;
+}
+
+label {
+  font-weight: normal;
+  margin: 0;
+}

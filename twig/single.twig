@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block main %}
+  <div class="container">
+    <div class="wrapper single__wrapper">
+      <article class="article">
+        <h1 class="layout__title">{{ post.post_title }}</h1>
+        <span class="article__date">{{ post.date|capitalize }}</span>
+        
+        {% if post.thumbnail %}
+          <div class="article__thumbnail">
+              <a href="{{ post.link }}" title="{{ post.title }}" rel="nofollow">
+                  <img class="article__thumbnail__img" src="{{ post.thumbnail|resize(200, 200, 'center') }}" alt="{{ post.title }}" width="150" height="auto"/>
+              </a>
+          </div>
+        {% endif %}
+
+        <div class="article__content">
+            {{ post.content }}
+        </div>
+      </article>
+      <div class="article__comments">
+        {{ function('comments_template') }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

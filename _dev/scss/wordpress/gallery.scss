@@ -1,0 +1,67 @@
+$class-slug: gallery-columns !default;
+$columns: 10 !default;
+
+.gallery {
+  @include clearfix();
+
+  .gallery-item {
+    margin-bottom: 0;
+    float: left;
+    padding: 10px;
+
+    .gallery-icon {
+      position: relative;
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      @include transform( 'scale(1)');
+      @include transition( '400ms');
+    }
+
+    &:hover {
+      img {
+        @include transform( 'scale(1.1)');
+      }
+    }
+  }
+
+  // Set width columns
+  @for $i from 1 to $columns {
+    &.#{$class-slug}-#{$i} {
+      .gallery-item {
+        width: 100% / $i;
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 991px) {
+  .gallery {
+    @for $i from 1 to $columns {
+       @if $i > 4{
+        &.#{$class-slug}-#{$i} {
+          .gallery-item {
+            width: 25%;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .gallery {
+    @for $i from 1 to $columns {
+       @if $i > 3{
+        &.#{$class-slug}-#{$i} {
+          .gallery-item {
+            width: 33.3333%;
+          }
+        }
+      }
+    }
+  }
+}

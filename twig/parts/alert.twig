@@ -1,0 +1,15 @@
+{% if alert %}
+    <div class="alert alert-{{alert.type}}" role="alert">
+        {% if alert.type == "danger" %}
+            <i class="fa fa-times-circle"></i>
+        {% elseif alert.type == "success" %}
+            <i class="fa fa-check-circle"></i>
+        {% elseif alert.type == "info" %}
+            <i class="fa fa-info-circle"></i>
+        {% endif %}
+            {{alert.message}}
+        {% if alert.close %}
+            <i class="fa fa-times close-alert"></i>
+        {% endif %}
+    </div>
+{% endif %}

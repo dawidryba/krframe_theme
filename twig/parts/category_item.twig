@@ -1,0 +1,14 @@
+<article class="col-md-6 col-sm-6 col-xs-12 article">
+  {% if post.thumbnail %}
+    <div class="article__thumbnail">
+        <a href="{{ post.link }}" title="{{ post.title }}" rel="nofollow">
+            <img class="article__thumbnail__img" src="{{ post.thumbnail|resize(200, 200, 'center') }}" alt="{{ post.title }}" width="150" height="auto"/>
+        </a>
+    </div>
+  {% endif %}
+    <div class="article__content">
+        <span class="article__date">{{ post.date|capitalize }}</span>
+        <a class="article__title" href="{{ post.link }}" title="{{ post.title }}">{{ post.title|truncate(3) }}</a>
+        <div class="article__text">{{ post.content|truncate(20)|striptags }}</div>
+    </div>
+</article>

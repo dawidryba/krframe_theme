@@ -1,0 +1,62 @@
+<!doctype html>
+<html ⚡ {{site.language_attributes}}>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ wp_title }}</title>
+    {{ function('wp_head') }}
+
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    {% block head %}{% endblock %}
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+      {% include 'assets/css/theme_amp.css' %}
+    </style>
+  </head>
+  <body>
+    <header class="layout-header">
+      <a href="{{ site.url }}/amp" class="layout-logo" title="{{ site.name }}">
+        <amp-img src="{{ site.theme.link }}/images/logo_white.png" alt="{{ site.name }}" height="87" width="303"></amp-img>
+      </a>
+    </header>
+
+    <nav class="layout-navsite clearfix">
+      {% block navigation %}
+        <div class="menu-bars" on='tap:sidebar1.toggle' tabindex='1' role='navigation'>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      {% endblock %}
+    </nav>
+    <amp-sidebar id="sidebar1" layout="nodisplay" side="right" class="navigation">
+      {% include "amp/menu.twig" with {'menu': menu.get_items} %}
+    </amp-sidebar>
+
+    <main class="layout-main">
+      {% block main %}
+
+      {% endblock %}
+    </main>
+    {% block footer %}{% endblock %}
+    <footer class="layout-footer">
+      <div class="copyright">
+        <div>
+          &copy {{ "now"|date('Y') }} - {{ site.name }}
+        </div>
+        <div>
+          {{__('Projekt i realizacja', 'krframe')}}
+          {% if function('is_front_page') %}
+            <a href="http://www.grupazaki.pl" title="Grupa ZAKI - reklama w internecie" target="_blank">Grupa ZAKI</a>
+          {% else %}
+            Grupa ZAKI
+          {% endif %}
+        </div>
+        <div class="cookie-info">{{ __('Przebywając na stronie akceptujesz pliki %s', 'krframe')|format('<a href="'~site.url~'/polityka-prywatnosci/amp" rel="nofollow" title="'~__('Cookie', 'krframe')~'">'~__('Cookie', 'krframe')~'</a>') }}</div>
+      </div>
+    </footer>
+  </body>
+</html>

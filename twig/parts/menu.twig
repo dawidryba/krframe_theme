@@ -1,0 +1,10 @@
+{% if menu %}
+    <ul>
+        {% for item in menu %}
+            <li class="{{item.classes | join(' ')}}" itemprop="url">
+                <a href="{{item.get_link}}" {{item._menu_item_xfn ? 'rel="'~item._menu_item_xfn~'"'}} title="{{ item.attr_title ? item.attr_title : item.title }}" itemprop="name">{{item.title}}</a>
+                {% include "parts/menu.twig" with {'menu': item.get_children} %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

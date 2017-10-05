@@ -1,0 +1,134 @@
+.navigation__inner {
+  background: $navigationBg;
+  padding: 0 $margin/2;
+  font-size: 13px;
+  margin-bottom: $margin;
+  color: $navigationAColor;
+
+  ul {
+    padding: 0;
+    list-style: none;
+    @include clearfix();
+    margin: 0;
+
+    > li {
+      float: left;
+      position: relative;
+      margin-right: $navigationAPadding;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      a {
+        display: block;
+        padding: $navigationAPadding*1.5 $navigationAPadding;
+        color: $navigationAColor;
+        @include transition( '#{$transitionStyle}');
+      }
+
+      &.current-menu-item,
+      &.current-menu-parent,
+      &.current-post-ancestor,
+      &.current-post-parent,
+      &:hover {
+        > a {
+          background: $green;
+          color: $navigationAHoverColor;
+        }
+      }
+
+      &.menu-item-has-children {
+        li {
+          margin-right: 0;
+        }
+
+        a {
+          padding-right: $navigationAPadding*2;
+        }
+
+        > ul {
+          display: block;
+          position: absolute;
+          z-index: 1;
+          left: 0;
+          width: $navigationSubWidth;
+          background: $navigationSubBg;
+          visibility: hidden;
+          opacity: 0;
+          margin-top: -10px;
+          @include transition( '#{$transitionStyle}');
+
+          > li {
+            width: 100%;
+
+            a {
+              display: block;
+              float: none;
+              padding: $navigationAPadding;
+            }
+
+            &.menu-item-has-children {
+              > ul {
+                left: 100%;
+                top: 0;
+
+                ul {
+                  display: none !important;
+                }
+              }
+            }
+          }
+        }
+
+        &:hover {
+          > ul {
+            visibility: visible;
+            opacity: 1;
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+@include media-breakpoint-down(md) {
+  .navigation__inner {
+    position: fixed;
+    z-index: 100;
+    left: -200px;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    background: $white;
+
+    border-right: 1px solid $grey;
+    overflow-y: auto;
+
+    @include transition( '400ms');
+
+    &.menu-open {
+      left: 0;
+    }
+
+    li {
+      display: block;
+      width: 100%;
+      float: none;
+    }
+
+    ul > li {
+      &.menu-item-has-children {
+        ul {
+          padding-left: 10px;
+          position: static;
+          opacity: 1;
+          margin: 0;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}

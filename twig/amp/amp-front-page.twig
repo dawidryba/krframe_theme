@@ -1,0 +1,40 @@
+{% extends 'amp/amp-base.twig' %}
+{% block main %}
+  {% if slider %}
+    <amp-carousel width="400" height="300" layout="responsive" type="slides">
+      {% for slide in slider %}
+        <div>
+          <div class="slide">
+            <h1 class="slide-title">{{ slide.title }}</h1>
+            {% if slide.content %}
+              <div class="slide-content">{{ slide.content }}</div>
+            {% endif %}
+            {% if slide.picture %}
+              <amp-img src="{{ slide.picture|letterbox(400, 300, '#fff') }}" alt="{{ slide.title }}" width="400" height="300">
+            {% endif %}
+
+          </div>
+        </div>
+      {% endfor %}
+    </amp-carousel>
+  {% endif %}
+  {% if posts %}
+    <div class="home-articles">
+      <h2 class="layout-title">{{ categoryName }}</h2>
+        {% for post in posts %}
+          <article class="home-article">
+            <div class="article-inner">
+              <div class="date">{{ post.date|date('m.Y')}}</div>
+              <div class="article-content" itemprop="text">{{ post.content }}</div>
+            </div>
+          </article>
+        {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block head %}
+  {% if slider %}
+  <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+  {% endif %}
+{% endblock %}

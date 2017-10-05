@@ -1,0 +1,9 @@
+<nav class="pagination" itemscope itemtype="http://schema.org/SiteNavigationElement">
+    <ul class="pages">
+            {% for page in pagination.pages %}
+                <li itemprop="url">
+                    <a href="{{page.link}}" class="{{page.class}}" itemprop="name" {{ not page.link ? 'rel="nofollow"'}}>{{page.title}}</a>
+                </li>
+            {% endfor %}
+    </ul>
+</nav>
