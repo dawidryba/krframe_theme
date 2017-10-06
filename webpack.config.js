@@ -24,7 +24,7 @@ let config = {
         loader: 'babel-loader',
         query: {
           presets: ['es2015'],
-        }
+        },
       },
       {
         test: /\.scss$/,

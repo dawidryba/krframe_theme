@@ -2,7 +2,7 @@
   width: device-width;
 }
 @import "~bootstrap/scss/bootstrap";
-@import '~font-awesome/scss/font-awesome';
+@import 'lib/font-awesome/scss/font-awesome';
 @import 'mixins';
 @import 'variables';
 @import 'fonts';
@@ -15,8 +15,10 @@
 @import 'wordpress/gallery';
 
 // Wordpress Widgets
-@import 'widgets/InstagramMedia';
 @import 'widgets/RelatedPosts';
+
+// libs
+@import 'lib/jquery.fancybox';
 
 //krFrame styles
 
