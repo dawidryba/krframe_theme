@@ -16,12 +16,21 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function($) {
   const $gallery = $('div.gallery');
-
+  if (!$gallery.length)
+    return;
+    
   $gallery.each(function(index) {
-    let id = $(this).attr('id');
-    $(this).find('a').attr('data-fancybox', 'gallery-'+index);
-    $('#'+id).fancybox({
-      selector : '.gallery-icon a[data-fancybox="gallery-'+index+'"]',
+    let parentIndex = index;
+    $(this).children('.gallery-item').each(function(index) {
+      let caption = $(this).find('.wp-caption-text').text();
+      $(this).find('a').attr({
+        'data-fancybox': 'gallery-'+parentIndex,
+        'data-caption': caption
+      });
+    });
+
+    $(this).fancybox({
+      selector : `div.gallery-icon a[data-fancybox="gallery-${parentIndex}"]`,
       loop     : true
     });
   });

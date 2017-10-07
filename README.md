@@ -39,7 +39,13 @@ composer install
 ### 2. (optional) If you want use node modules to compile, compress css, js, in main dir run command:
 
 ```npm
-yarn install
+yarn
+```
+
+or
+
+```npm
+npm install
 ```
 
 Enable develope mode. Edit **webpack.config.js** file and change variable **domain** on your local domain and next make command:
