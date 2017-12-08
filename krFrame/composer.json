@@ -1,5 +1,16 @@
 {
-    "require": {
-        "timber/timber": "^1.2"
+  "require": {
+    "timber/timber": "^1.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "krFrame\\Src\\initTemplate\\": "src/initTemplate",
+      "krFrame\\Src\\Error\\": "src/error",
+      "krFrame\\Layout\\": "layout",
+      "krFrame\\Src\\Front\\": "src/front",
+      "krFrame\\Src\\Widgets\\": "src/widgets",
+      "krFrame\\Src\\Modules\\RelatedPosts\\": "src/modules/RelatedPosts",
+      "krFrame\\utilis\\": "src/utilis"
     }
+  }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace krFrame\front;
+namespace krFrame\Src\Front;
 
 class GalleryOption
 {

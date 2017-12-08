@@ -1,44 +1,33 @@
 {
-    "name": "krframe-theme",
-    "version": "1.0.0",
-    "description": "Wordpress krFrame theme",
-    "main": "index.js",
-    "scripts": {
-        "watch": "webpack -w",
-        "build": "webpack"
-    },
-    "author": "Dawid Rybacki",
-    "license": "AFL-3.0",
-    "devDependencies": {
-        "autoprefixer": "^7.1.4",
-        "babel-loader": "^7.1.2",
-        "browser-sync": "^2.18.13",
-        "browser-sync-webpack-plugin": "^1.2.0",
-        "css-loader": "^0.28.7",
-        "expose-loader": "^0.7.3",
-        "extract-text-webpack-plugin": "^3.0.0",
-        "file-loader": "^1.1.4",
-        "flexibility": "^2.0.1",
-        "material-design-icons": "^3.0.1",
-        "node-sass": "^4.5.0",
-        "notosans-fontface": "~1.0.1",
-        "postcss-flexibility": "^2.0.0",
-        "postcss-loader": "^2.0.6",
-        "sass-loader": "^6.0.3",
-        "style-loader": "^0.18.2",
-        "tether": "^1.1.1",
-        "typeface-montserrat": "0.0.37",
-        "velocity-animate": "^1.2.3",
-        "webpack": "^3.6.0",
-        "webpack-sources": "^1.0.1"
-    },
-    "peerDependencies": {
-        "babel-core": "6 || 7 || ^7.0.0-alpha || ^7.0.0-beta || ^7.0.0-rc",
-        "webpack": "2 || 3"
-    },
-    "dependencies": {
-        "babel-core": "^6.26.0",
-        "babel-preset-es2015-webpack": "^6.4.3",
-        "bootstrap": "4.0.0-beta"
-    }
+  "name": "krframe-theme",
+  "version": "1.0.0",
+  "description": "Wordpress krFrame theme",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack -w",
+    "build": "webpack"
+  },
+  "author": "Dawid Rybacki",
+  "license": "AFL-3.0",
+  "dependencies": {
+    "autoprefixer": "^7.1.4",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "bootstrap": "4.0.0-beta.2",
+    "browser-sync": "^2.18.13",
+    "browser-sync-webpack-plugin": "^1.2.0",
+    "css-loader": "^0.28.7",
+    "expose-loader": "^0.7.3",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.4",
+    "flexibility": "^2.0.1",
+    "node-sass": "^4.5.0",
+    "postcss-flexibility": "^2.0.0",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0",
+    "webpack-sources": "^1.0.1"
+  }
 }

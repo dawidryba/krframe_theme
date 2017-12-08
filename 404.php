@@ -1,4 +1,4 @@
 <?php
-$template = new \krFrame\src\front\DefaultContent('404');
+$template = new \krFrame\Src\Front\DefaultContent('404');
 $context = $template->getContext();
 $template->render($context);

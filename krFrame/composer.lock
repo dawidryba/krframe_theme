@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce29d8b2fde10fd12685e43f4ca2760d",
+    "content-hash": "66a4d8c6fcf67cec59e9d4706c57217b",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -230,16 +230,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
                 "shasum": ""
             },
             "require": {
@@ -251,7 +251,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -285,20 +285,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "timber/timber",
-            "version": "1.5.0",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "6af11a26d88fd348f83a3edb3bdb5cab72b5c267"
+                "reference": "f566b4c3a1a778dab68afa154a4806b90287d6a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/6af11a26d88fd348f83a3edb3bdb5cab72b5c267",
-                "reference": "6af11a26d88fd348f83a3edb3bdb5cab72b5c267",
+                "url": "https://api.github.com/repos/timber/timber/zipball/f566b4c3a1a778dab68afa154a4806b90287d6a6",
+                "reference": "f566b4c3a1a778dab68afa154a4806b90287d6a6",
                 "shasum": ""
             },
             "require": {
@@ -346,7 +346,7 @@
                 "timber",
                 "twig"
             ],
-            "time": "2017-09-19T01:28:57+00:00"
+            "time": "2017-10-12T17:30:04+00:00"
         },
         {
             "name": "twig/twig",

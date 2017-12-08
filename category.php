@@ -1,6 +1,4 @@
 <?php
-use \Timber\Timber as Timber;
-
-$template = new \krFrame\src\front\DefaultContent('category');
+$template = new \krFrame\Src\Front\DefaultContent('category');
 $context = $template->getContext();
 $template->render($context);

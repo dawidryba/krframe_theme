@@ -1,5 +1,4 @@
 'use strict';
-
 import './lib/jquery.fancybox.js';
 
 jQuery(document).ready(function($) {
@@ -18,7 +17,7 @@ jQuery(document).ready(function($) {
   const $gallery = $('div.gallery');
   if (!$gallery.length)
     return;
-    
+
   $gallery.each(function(index) {
     let parentIndex = index;
     $(this).children('.gallery-item').each(function(index) {

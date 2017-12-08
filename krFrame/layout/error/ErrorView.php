@@ -1,12 +1,13 @@
 <?php
-namespace krFrame\layout\error;
+namespace krFrame\Layout;
 
 final class ErrorView
 {
     private $code;
     private $errorText;
 
-    public function __construct($code, $errorText) {
+    public function __construct($code, $errorText)
+    {
         $this->code = $code;
         $this->errorText = $errorText;
 
