@@ -77,6 +77,7 @@ class RelatedPosts
       );
         }
         unset($currentPost);
+        wp_reset_query();
         return $arrayReturn;
     }
 

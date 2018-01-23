@@ -26,9 +26,6 @@ class DefaultContent
         if (function_exists('pll_the_languages')) {
             $this->context['langs'] = $this->setLanguages();
         }
-        if (isset($GLOBALS['settingJSON']['amp_support']) && $GLOBALS['settingJSON']['amp_support']) {
-            $this->context['ampSupport'] = $this->acctualURL;
-        }
     }
 
     private function getContent()

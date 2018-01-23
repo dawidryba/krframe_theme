@@ -4,15 +4,11 @@ use \krFrame\Src\initTemplate\InitTemplate;
 require('krFrame/vendor/autoload.php');
 $template = new InitTemplate();
 
-// ================= END KRFRAME ===================
-// DELETE JS SCRIPT
-
-add_filter('wp_default_scripts', 'isa_remove_jquery_migrate');
+add_filter('wp_default_scripts', 'removeJQueryAndAddNew');
 add_action('wp_footer', 'my_deregister_scripts');
-
 remove_action('wp_head', 'wp_resource_hints', 2);
 
-function isa_remove_jquery_migrate(&$scripts)
+function removeJQueryAndAddNew(&$scripts)
 {
     if (!is_admin()) {
         $scripts->remove('jquery');
@@ -24,6 +20,8 @@ function my_deregister_scripts()
 {
     wp_deregister_script('wp-embed');
 }
+// ================= END KRFRAME ===================
+// DELETE JS SCRIPT
 
 // AJAX FUNCTION
 

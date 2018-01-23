@@ -10,6 +10,6 @@ class Languages
 
     public function initLanguages()
     {
-        load_theme_textdomain('krframe', get_template_directory() . '/krFrame/language');
+        load_theme_textdomain('krframe', get_template_directory() . '/krFrame/languages');
     }
 }
