@@ -18,13 +18,13 @@ class ACFSupport
 
     public function registerACFPlugin($path)
     {
-        $path = get_stylesheet_directory() . '/plugin/advanced-custom-fields/';
+        $path = get_stylesheet_directory() . '/krFrame/ext/advanced-custom-fields/';
         return $path;
     }
 
     public function getACFSettingDir($dir)
     {
-        $dir = KR_THEME_DIR. '/plugin/advanced-custom-fields/';
+        $dir = KR_THEME_DIR. '/krFrame/ext/advanced-custom-fields/';
         return $dir;
     }
 
@@ -36,6 +36,6 @@ class ACFSupport
 
     private function getInstallFile()
     {
-        require(get_stylesheet_directory() . '/plugin/advanced-custom-fields/acf.php');
+        require(get_stylesheet_directory() . '/krFrame/ext/advanced-custom-fields/acf.php');
     }
 }

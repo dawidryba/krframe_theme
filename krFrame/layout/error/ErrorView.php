@@ -1,5 +1,5 @@
 <?php
-namespace krFrame\Layout;
+namespace krFrame\Layout\ErrorView;
 
 final class ErrorView
 {

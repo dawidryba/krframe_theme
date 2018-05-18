@@ -13,35 +13,9 @@ $transitionStyle: 200ms;
 
 $inputBorderColor: transparent;
 
-$closeAlertHoverColor: $grey;
-
-$theadBgColor: $silver;
-
-$pseudoSelectCurrentBg: $white;
-$pseudoSelectFontSize: 13px;
-$pseudoSelectAColor: $grey;
-$pseudoSelectAHoverColor: $green;
-
-$paginationAColor: $white;
-$paginationBgColor: $grey;
-$paginationTextColorCurrent: $white;
-$paginationBgColorCurrent: $green;
+$globalAColor: $green;
+$globalAHoverColor: $grey;
 
 $blockquoteBgColor: $white;
 $blockquoteFontSize: 14px;
 $blockquoteTextColor: $grey;
-
-// GLOBAL COLORS
-$globalAColor: $green;
-$globalAHoverColor: $grey;
-
-$globalBodyBgColor: transparent;
-$globalBodyTextColor: $grey;
-
-// navigation
-$navigationBg: $white;
-$navigationAColor: $grey;
-$navigationAHoverColor: $white;
-$navigationSubBg: $white;
-
-$navigationSubWidth: 200px;

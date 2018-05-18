@@ -1,7 +1,7 @@
 <?php
-namespace krFrame\Src\error;
+namespace krFrame\Src\Error;
 use \krFrame\Src\Error\ErrorCode;
-use \krFrame\Layout\ErrorView;
+use \krFrame\Layout\ErrorView\ErrorView;
 
 class Error
 {

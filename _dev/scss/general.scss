@@ -1,14 +1,6 @@
 // MEDIA STYLES
 
 body {
-  @include transition( '400ms');
-  padding-left: 0;
-  margin-right: 0;
-
-  &.menu-open {
-    padding-left: 200px;
-    margin-right: -200px;
-  }
 }
 
 img,
@@ -41,36 +33,4 @@ blockquote {
   background: $blockquoteBgColor;
   font-size: $blockquoteFontSize;
   color: $blockquoteTextColor;
-}
-
-html {
-  overflow-x: hidden;
-}
-
-.button--menu {
-  display: none;
-}
-
-@include media-breakpoint-down(md) {
-  .button--menu {
-    display: block;
-  }
-}
-
-.layout__mask-bg {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  @include transition( '400ms');
-  visibility: hidden;
-  opacity: 0;
-  @include rgba($black, .7);
-
-  &.active {
-    visibility: visible;
-    opacity: 1;
-  }
 }

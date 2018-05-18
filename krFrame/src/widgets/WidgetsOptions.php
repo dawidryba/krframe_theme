@@ -21,13 +21,15 @@ class WidgetsOptions
         'widgetClass' => '',
         'title' => '',
         'text' => '',
+        'grid' => 0,
         'gridXl' => 'col-xl-12',
         'gridLg' => 'col-lg-12',
         'gridMd' => 'col-md-12',
         'gridSm' => 'col-sm-12',
         'gridXs' => 'col',
         'titAwesome' => '',
-        'titClass' => ''
+        'titClass' => '',
+        'titShow' => 0
         )
     );
 
@@ -48,19 +50,16 @@ class WidgetsOptions
     {
         $instance['widgetClass'] = $new_instance['widgetClass'];
 
+        $instance['grid'] = $new_instance['grid'] == 1 ? 1 : 0;
         $instance['gridXl'] = $new_instance['gridXl'];
         $instance['gridLg'] = $new_instance['gridLg'];
         $instance['gridMd'] = $new_instance['gridMd'];
         $instance['gridSm'] = $new_instance['gridSm'];
         $instance['gridXs'] = $new_instance['gridXs'];
-        $instance['displayXl'] = isset($new_instance['displayXl']) ? 1 : 0;
-        $instance['displayLg'] = isset($new_instance['displayLg']) ? 1 : 0;
-        $instance['displayMd'] = isset($new_instance['displayMd']) ? 1 : 0;
-        $instance['displaySm'] = isset($new_instance['displaySm']) ? 1 : 0;
-        $instance['displayXs'] = isset($new_instance['displayXs']) ? 1 : 0;
 
         $instance['titAwesome'] = $new_instance['titAwesome'];
         $instance['titClass'] = $new_instance['titClass'];
+        $instance['titShow'] = $new_instance['titShow'] == 1 ? 1 : 0;
 
         return $instance;
     }
@@ -73,23 +72,28 @@ class WidgetsOptions
         $widgetOpt = get_option($widgetObj['callback'][0]->option_name);
         $widgetNum = $widgetObj['params'][0]['number'];
 
-        $display = $this->setDisplay($widgetOpt[$widgetNum]);
-        $grid = $this->setGrid($widgetOpt[$widgetNum]);
+        $grid = '';
+        if ($widgetOpt[$widgetNum]['grid'] == 1) {
+            $grid = $this->setGrid($widgetOpt[$widgetNum]);
+        }
+
 
         $widgetClass = '';
         if (isset($widgetOpt[$widgetNum]['widgetClass'])) {
             $widgetClass = $widgetOpt[$widgetNum]['widgetClass'];
         }
 
-        $widgetTitleClass = '';
-        if (isset($widgetOpt[$widgetNum]['titClass'])) {
-            $widgetTitleClass = $widgetOpt[$widgetNum]['titClass'];
+        $params[0]['before_widget'] = $this->setClass($params[0]['before_widget'], $grid.$widgetClass);
+
+        if ($widgetOpt[$widgetNum]['titShow'] == 1) {
+            $params[0]['before_title'] = $this->setHidden($params[0]['before_title']);
+        }else{
+            $widgetTitleClass = '';
+            if (isset($widgetOpt[$widgetNum]['titClass'])) {
+                $widgetTitleClass = $widgetOpt[$widgetNum]['titClass'];
+            }
+            $params[0]['before_title'] = $this->setClass($params[0]['before_title'], $widgetTitleClass);
         }
-
-        $params[0]['before_widget'] = $this->setClass($params[0]['before_widget'], $grid.$display.$widgetClass);
-
-        $params[0]['before_title'] = $this->setClass($params[0]['before_title'], $widgetTitleClass);
-
         if (isset($widgetOpt[$widgetNum]['titAwesome']) && $widgetOpt[$widgetNum]['titAwesome'] != '') {
             $params[0]['before_title'] .= $this->prepareIcon($widgetOpt[$widgetNum]['titAwesome']);
         }
@@ -100,7 +104,13 @@ class WidgetsOptions
     private function prepareIcon($class)
     {
         $class = str_replace(',', ' ', $class);
-        return '<i class="'.$class.'" aria-hidden="true"></i> ';
+        return '<i class="'.$class.'"></i> ';
+    }
+
+    private function setHidden($title) {
+        $title = preg_replace('#class="[a-zA-Z0-9:;\.\s\(\)\-\,]*"#', '', $title);
+        $title = str_replace('>', 'hidden>', $title);
+        return $title;
     }
 
     private function setClass($title, $class)
@@ -110,34 +120,9 @@ class WidgetsOptions
             if ($pos !== false) {
                 $title = substr_replace($title, 'class="'.$class.' ', $pos, strlen('class="'));
             }
-            //$title = str_replace('class="', 'class="'.$class.' ', $title);
-            //$title = str_replace('class=\'', 'class=\''.$class.' ', $title);
             $title = str_replace(',', ' ', $title);
-            return $title;
         }
         return $title;
-    }
-
-    private function setDisplay($settingArray)
-    {
-        $display = '';
-        if (isset($settingArray['displayXl']) && $settingArray['displayXl'] == 1) {
-            $display .= 'hidden-xl-up ';
-        }
-        if (isset($settingArray['displayLg']) && $settingArray['displayLg'] == 1) {
-            $display .= 'hidden-lg-up ';
-        }
-        if (isset($settingArray['displayMd']) && $settingArray['displayMd'] == 1) {
-            $display .= 'hidden-md-up ';
-        }
-        if (isset($settingArray['displaySm']) && $settingArray['displaySm'] == 1) {
-            $display .= 'hidden-sm-up ';
-        }
-        if (isset($settingArray['displayXs']) && $settingArray['displayXs'] == 1) {
-            $display .= 'hidden-xs-up ';
-        }
-
-        return $display;
     }
 
     private function setGrid($settingArray)
@@ -167,7 +152,7 @@ class WidgetsOptions
         if (!isset($settingArray['gridXs']) || $settingArray['gridXs'] == '') {
             $grid .= 'col ';
         } else {
-            $grid .= $settingArray['gridXs'].' ';
+            $grid .= $settingArray['gridXs'];
         }
         return $grid;
     }

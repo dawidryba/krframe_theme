@@ -1,7 +1,6 @@
 <?php
 namespace krFrame\Src\initTemplate;
 
-use \krFrame\utilis\AMPSupport;
 use \krFrame\utilis\ACFSupport;
 use \krFrame\Src\Error\Error;
 
@@ -34,9 +33,6 @@ class SetSetting
             if (isset($this->jsonDecodeFile['taxonomies'])) {
                 new SetCustomTaxonomies($this->jsonDecodeFile['taxonomies']);
             }
-            if (isset($this->jsonDecodeFile['amp_support']) && $this->jsonDecodeFile['amp_support']) {
-                new AMPSupport();
-            }
             if (isset($this->jsonDecodeFile['acf_support']) && isset($this->jsonDecodeFile['acf_support']['enable']) && $this->jsonDecodeFile['acf_support']['enable']) {
                 new ACFSupport();
             }
@@ -65,10 +61,10 @@ class SetSetting
 
     private function checkWidget()
     {
-        $widgets = $this->jsonDecodeFile['widgets'];
-        if ($widgets === null) {
+        if (!isset($this->jsonDecodeFile['widgets']) || $this->jsonDecodeFile['widgets'] === null) {
             $this->initError(8);
         }
+        $widgets = $this->jsonDecodeFile['widgets'];
         foreach ($widgets as $key => $widget) {
             if (!isset($widget['name'])) {
                 $this->initError(3);
@@ -102,11 +98,10 @@ class SetSetting
 
     private function checkMenu()
     {
-        $menu = $this->jsonDecodeFile['menu'];
-        if ($menu === null) {
+        if(!isset($this->jsonDecodeFile['menu']) || $this->jsonDecodeFile['menu'] === null) {
             $this->initError(9);
         }
-        $this->menu = $menu;
+        $this->menu = $this->jsonDecodeFile['menu'];
         return true;
     }
 
@@ -122,11 +117,10 @@ class SetSetting
 
     private function checkThumbnail()
     {
-        if (isset($this->jsonDecodeFile['thumbnail'])) {
-            $thumbs = $this->jsonDecodeFile['thumbnail'];
-        } else {
+        if (!isset($this->jsonDecodeFile['thumbnail'])) {
             return false;
         }
+        $thumbs = $this->jsonDecodeFile['thumbnail'];
         foreach ($thumbs as $key => $thumb) {
             if (!isset($thumb['width'])) {
                 $this->initError(11);

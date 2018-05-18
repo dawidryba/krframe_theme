@@ -7,6 +7,7 @@
       "krFrame\\Src\\initTemplate\\": "src/initTemplate",
       "krFrame\\Src\\Error\\": "src/error",
       "krFrame\\Layout\\": "layout",
+      "krFrame\\Layout\\ErrorView\\": "layout/error",
       "krFrame\\Src\\Front\\": "src/front",
       "krFrame\\Src\\Widgets\\": "src/widgets",
       "krFrame\\Src\\Modules\\RelatedPosts\\": "src/modules/RelatedPosts",

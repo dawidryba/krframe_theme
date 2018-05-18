@@ -3,7 +3,8 @@ $columns: 10 !default;
 
 .gallery {
   @include clearfix();
-
+  margin: 0 -10px;
+  
   .gallery-item {
     margin-bottom: 0;
     float: left;

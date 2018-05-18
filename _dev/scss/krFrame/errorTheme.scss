@@ -1,6 +1,6 @@
 .errorTheme {
-  background: $globalBodyBgColor;
-  color: $globalBodyTextColor;
+  background: #fff;
+  color: #000;
   min-height: 100%;
 
   body {
@@ -9,7 +9,7 @@
   .errorPage {
     position: absolute;
     top: 50%;
-    @include transform('translate(0,-50%)');
+    transform: translate(0,-50%);
     width: 100%;
     text-align: center;
     line-height: normal;

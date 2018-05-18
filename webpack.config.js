@@ -3,7 +3,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-const domain = 'http://krframe.dev';
+const domain = 'http://krframe.local';
 
 let config = {
     entry: {
@@ -14,7 +14,7 @@ let config = {
     },
     output: {
         path: path.resolve(__dirname, 'assets/js'),
-        filename: 'main.script.js'
+        filename: '[name].script.js'
     },
     module: {
         rules: [{
@@ -32,7 +32,8 @@ let config = {
                     use: [{
                             loader: 'css-loader',
                             options: {
-                                minimize: true
+                                minimize: true,
+                                url: false
                             }
                         },
                         'postcss-loader',
@@ -65,6 +66,7 @@ let config = {
             host: 'localhost',
             port: 3000,
             proxy: domain,
+            browser: 'firefox',
             files: [
                 'twig/*.twig',
                 'twig/**/*.twig',
@@ -83,7 +85,7 @@ config.plugins.push(
             booleans: true,
             if_return: true,
             join_vars: true,
-            drop_console: true
+            drop_console: false
         },
         output: {
             comments: false
