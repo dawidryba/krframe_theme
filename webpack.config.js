@@ -1,97 +1,91 @@
-const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const domain = 'http://krframe.local';
+new webpack.EnvironmentPlugin(['NODE_ENV', 'DEBUG']);
 
-let config = {
-    entry: {
-        main: [
-            './_dev/js/template.js',
-            './_dev/scss/template.scss'
-        ]
-    },
-    output: {
-        path: path.resolve(__dirname, 'assets/js'),
-        filename: '[name].script.js'
-    },
-    module: {
-        rules: [{
-                test: /\.js/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['env'],
+
+const domain = 'http://medyczny.localhost/';
+
+module.exports = env => {
+    const devMode = env.NODE_ENV !== 'production';
+    return {
+        mode: env.NODE_ENV,
+        entry: {
+            main: [
+                './_dev/js/main.js',
+                './_dev/scss/main.scss'
+            ]
+        },
+        output: {
+            path: path.resolve(__dirname, 'assets/js'),
+            filename: '[name].script.js'
+        },
+        module: {
+            rules: [{
+                    test: /\.js/,
+                    exclude: /node_modules/,
+                    loader: 'babel-loader',
+                    query: {
+                        presets: ['@babel/env'],
+                    },
                 },
-            },
-            {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [{
-                            loader: 'css-loader',
-                            options: {
-                                minimize: true,
-                                url: false
-                            }
-                        },
+                {
+                    test: /\.scss$/,
+                    use: [
+                        devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                        'css-loader',
                         'postcss-loader',
                         'sass-loader'
                     ]
-                })
-            },
-            {
-                test: /.(png|jpg|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '../css/[hash].[ext]'
-                    }
-                }]
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader', 'postcss-loader']
-            }
-        ]
-    },
-    externals: {
-        $: '$',
-        jquery: 'jQuery'
-    },
-    plugins: [
-        new ExtractTextPlugin(path.join('..', 'css', 'theme.css')),
-        new BrowserSyncPlugin({
-            host: 'localhost',
-            port: 3000,
-            proxy: domain,
-            browser: 'firefox',
-            files: [
-                'twig/*.twig',
-                'twig/**/*.twig',
-                '*.php',
+                },
+                {
+                    test: /.(png|jpg|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
+                    use: [{
+                        loader: 'file-loader',
+                        options: {
+                            name: '../css/[hash].[ext]'
+                        }
+                    }]
+                },
+                {
+                    test: /\.css$/,
+                    use: ['style-loader', 'css-loader', 'postcss-loader']
+                }
             ]
-        })
-    ]
+        },
+        externals: {
+            $: '$',
+            jquery: 'jQuery'
+        },
+        optimization: {
+            minimizer: [
+                new UglifyJsPlugin({
+                    cache: true,
+                    parallel: true,
+                    sourceMap: true // set to true if you want JS source maps
+                }),
+                new OptimizeCSSAssetsPlugin({})
+            ]
+        },
+        plugins: [
+            new MiniCssExtractPlugin({
+                filename: "../css/[name].min.css",
+                chunkFilename: "[id].css"
+            }),
+            new BrowserSyncPlugin({
+                host: 'localhost',
+                port: 3000,
+                proxy: domain,
+                files: [
+                    'twig/*.twig',
+                    'twig/**/*.twig',
+                    '*.php',
+                ]
+            })
+        ]
+    }
 };
-
-config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-        sourceMap: false,
-        compress: {
-            sequences: true,
-            conditionals: true,
-            booleans: true,
-            if_return: true,
-            join_vars: true,
-            drop_console: false
-        },
-        output: {
-            comments: false
-        },
-        minimize: true
-    })
-);
-
-module.exports = config;
